@@ -19,6 +19,8 @@
 		D6B774AC1C584C3000EC8CDF /* death.wav in Resources */ = {isa = PBXBuildFile; fileRef = D6B774A71C584C3000EC8CDF /* death.wav */; };
 		D6B774AD1C584C3000EC8CDF /* heart.wav in Resources */ = {isa = PBXBuildFile; fileRef = D6B774A81C584C3000EC8CDF /* heart.wav */; };
 		D6B774AE1C584C3000EC8CDF /* skull.wav in Resources */ = {isa = PBXBuildFile; fileRef = D6B774A91C584C3000EC8CDF /* skull.wav */; };
+		D6B774B01C585B7400EC8CDF /* Minecraft.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6B774AF1C585B7400EC8CDF /* Minecraft.ttf */; };
+		D6B774B21C58710700EC8CDF /* DiggerImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B774B11C58710700EC8CDF /* DiggerImg.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		D6B774A71C584C3000EC8CDF /* death.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = death.wav; sourceTree = "<group>"; };
 		D6B774A81C584C3000EC8CDF /* heart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = heart.wav; sourceTree = "<group>"; };
 		D6B774A91C584C3000EC8CDF /* skull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = skull.wav; sourceTree = "<group>"; };
+		D6B774AF1C585B7400EC8CDF /* Minecraft.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minecraft.ttf; sourceTree = "<group>"; };
+		D6B774B11C58710700EC8CDF /* DiggerImg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiggerImg.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 		D6B7748E1C5828B400EC8CDF /* MyLittelMonster */ = {
 			isa = PBXGroup;
 			children = (
+				D6B774AF1C585B7400EC8CDF /* Minecraft.ttf */,
 				D6B774A51C584C3000EC8CDF /* bite.wav */,
 				D6B774A61C584C3000EC8CDF /* cave-music.mp3 */,
 				D6B774A71C584C3000EC8CDF /* death.wav */,
@@ -77,6 +82,7 @@
 				D6B774911C5828B400EC8CDF /* ViewController.swift */,
 				D6B774A11C5834E100EC8CDF /* DragImg.swift */,
 				D6B774A31C5838E700EC8CDF /* MonsterImg.swift */,
+				D6B774B11C58710700EC8CDF /* DiggerImg.swift */,
 				D6B774931C5828B400EC8CDF /* Main.storyboard */,
 				D6B774961C5828B400EC8CDF /* Assets.xcassets */,
 				D6B774981C5828B400EC8CDF /* LaunchScreen.storyboard */,
@@ -146,6 +152,7 @@
 				D6B774AE1C584C3000EC8CDF /* skull.wav in Resources */,
 				D6B774AA1C584C3000EC8CDF /* bite.wav in Resources */,
 				D6B774AC1C584C3000EC8CDF /* death.wav in Resources */,
+				D6B774B01C585B7400EC8CDF /* Minecraft.ttf in Resources */,
 				D6B774AD1C584C3000EC8CDF /* heart.wav in Resources */,
 				D6B774AB1C584C3000EC8CDF /* cave-music.mp3 in Resources */,
 				D6B7749A1C5828B400EC8CDF /* LaunchScreen.storyboard in Resources */,
@@ -165,6 +172,7 @@
 				D6B774A21C5834E100EC8CDF /* DragImg.swift in Sources */,
 				D6B774921C5828B400EC8CDF /* ViewController.swift in Sources */,
 				D6B774901C5828B400EC8CDF /* AppDelegate.swift in Sources */,
+				D6B774B21C58710700EC8CDF /* DiggerImg.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

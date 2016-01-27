@@ -11,13 +11,16 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var diggerImg: DiggerImg!
     @IBOutlet weak var monsterImg: MonsterImg!
     @IBOutlet weak var foodImg: DragImg!
     @IBOutlet weak var heartImg: DragImg!
     @IBOutlet weak var penalty1Img: UIImageView!
     @IBOutlet weak var penalty2Img: UIImageView!
     @IBOutlet weak var penalty3Img: UIImageView!
-    
+    @IBOutlet weak var restartLbl: UILabel!
+    @IBOutlet weak var restartBtn: UIButton!
+    @IBOutlet weak var chooseingView: UIView!
     let DIM_ALPHA: CGFloat = 0.2
     let OPAQUE: CGFloat = 1.0
     let MAX_PENALTIES = 3
@@ -26,6 +29,7 @@ class ViewController: UIViewController {
     var timer: NSTimer!
     var monsterHappy = false
     var currentItem: UInt32 = 0
+    var isMonsterChoosen = true
     
     var musicPlayer: AVAudioPlayer!
     var sfxBit: AVAudioPlayer!
@@ -37,13 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        foodImg.dropTarget = monsterImg
-        heartImg.dropTarget = monsterImg
-        
-        penalty1Img.alpha = DIM_ALPHA
-        penalty2Img.alpha = DIM_ALPHA
-        penalty3Img.alpha = DIM_ALPHA
-        
+        penaltyDimAlpha()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
@@ -70,12 +68,11 @@ class ViewController: UIViewController {
             print(err.debugDescription)
         }
         
-        startTimer()
+        //startTimer()
         
     }
     
     func itemDroppedOnCharacter(notif: AnyObject) {
-        print("ITEM DROPPED ON CHARACTER")
         monsterHappy = true
         startTimer()
         
@@ -116,9 +113,7 @@ class ViewController: UIViewController {
             } else if penalties >= 3 {
                 penalty3Img.alpha = OPAQUE
             } else {
-                penalty1Img.alpha = DIM_ALPHA
-                penalty2Img.alpha = DIM_ALPHA
-                penalty3Img.alpha = DIM_ALPHA
+                penaltyDimAlpha()
             }
             
             if penalties >= MAX_PENALTIES {
@@ -130,17 +125,11 @@ class ViewController: UIViewController {
         let rand = arc4random_uniform(2)
         
         if rand == 0 {
-            foodImg.alpha = DIM_ALPHA
-            foodImg.userInteractionEnabled = false
-            
-            heartImg.alpha = OPAQUE
-            heartImg.userInteractionEnabled = true
+            foodDimAlfa()
+            heartOpaque()
         } else {
-            foodImg.alpha = OPAQUE
-            foodImg.userInteractionEnabled = true
-            
-            heartImg.alpha = DIM_ALPHA
-            heartImg.userInteractionEnabled = false
+            foodOpaque()
+            heartDimAlfa()
         }
         
         currentItem = rand
@@ -150,8 +139,96 @@ class ViewController: UIViewController {
     
     func gameOver() {
         timer.invalidate()
-        monsterImg.playDeathAnimation()
+        foodDimAlfa()
+        heartDimAlfa()
+        if isMonsterChoosen {
+            monsterImg.playDeathAnimation()
+        } else {
+            diggerImg.playDeathAnimation()
+        }
         sfxDeath.play()
+        restartAppear()
+    }
+    
+    @IBAction func onRestartPressed(sender: AnyObject) {
+        restart()
+        restartDisappear()
+    }
+    
+    func restart() {
+        penalties = 0
+        penaltyDimAlpha()
+        if isMonsterChoosen {
+            monsterImg.playReverseDeathAnimation()
+            monsterImg.playIdelAnimation()
+        } else {
+            diggerImg.playReverseDeathAnimation()
+            diggerImg.playIdelAnimation()
+        }
+        
+    }
+    
+    func restartAppear() {
+        restartLbl.hidden = false
+        restartBtn.hidden = false
+    }
+    
+    func restartDisappear() {
+        restartBtn.hidden = true
+        restartLbl.hidden = true
+    }
+    
+    func foodDimAlfa() {
+        foodImg.alpha = DIM_ALPHA
+        foodImg.userInteractionEnabled = false
+    }
+    
+    func heartDimAlfa() {
+        heartImg.alpha = DIM_ALPHA
+        heartImg.userInteractionEnabled = false
+    }
+    
+    func foodOpaque() {
+        foodImg.alpha = OPAQUE
+        foodImg.userInteractionEnabled = true
+    }
+    
+    func heartOpaque() {
+        heartImg.alpha = OPAQUE
+        heartImg.userInteractionEnabled = true
+    }
+    
+    
+    func penaltyDimAlpha() {
+        penalty1Img.alpha = DIM_ALPHA
+        penalty2Img.alpha = DIM_ALPHA
+        penalty3Img.alpha = DIM_ALPHA
+    }
+    
+    @IBAction func onMonster1Pressed(sender: AnyObject) {
+        chooseingView.hidden = true
+        monsterTarget()
+        diggerImg.hidden = true
+        isMonsterChoosen = true
+        startTimer()
+    }
+    
+    
+    @IBAction func onMonster2Pressed(sender: AnyObject) {
+        chooseingView.hidden = true
+        diggerTarget()
+        monsterImg.hidden = true
+        isMonsterChoosen = false
+        startTimer()
+    }
+    
+    func monsterTarget() {
+        foodImg.dropTarget = monsterImg
+        heartImg.dropTarget = monsterImg
+    }
+    func diggerTarget() {
+        foodImg.dropTarget = diggerImg
+        heartImg.dropTarget = diggerImg
     }
 
 }

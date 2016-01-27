@@ -1,5 +1,5 @@
 //
-//  MonsterImg.swift
+//  DiggerImg.swift
 //  MyLittelMonster
 //
 //  Created by Amr Sami on 1/27/16.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MonsterImg: UIImageView {
+class DiggerImg: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -22,13 +22,13 @@ class MonsterImg: UIImageView {
     
     func playIdelAnimation() {
         
-        self.image = UIImage(named: "idle1.png")
+        self.image = UIImage(named: "idle (1).png")
         
         self.animationImages = nil
         
         var imgArray = [UIImage]()
         for var i = 1; i <= 4; i++ {
-            let img = UIImage(named: "idle\(i).png")
+            let img = UIImage(named: "idle (\(i)).png")
             imgArray.append(img!)
         }
         
@@ -40,13 +40,13 @@ class MonsterImg: UIImageView {
     
     func playDeathAnimation() {
         
-        self.image = UIImage(named: "dead5.png")
+        self.image = UIImage(named: "hide (6).png")
         
         self.animationImages = nil
         
         var imgArray = [UIImage]()
-        for var i = 1; i <= 5; i++ {
-            let img = UIImage(named: "dead\(i).png")
+        for var i = 1; i <= 6; i++ {
+            let img = UIImage(named: "hide (\(i)).png")
             imgArray.append(img!)
         }
         
@@ -58,13 +58,13 @@ class MonsterImg: UIImageView {
     
     func playReverseDeathAnimation() {
         
-        self.image = UIImage(named: "dead5.png")
+        self.image = UIImage(named: "hide (6).png")
         
         self.animationImages = nil
         
         var imgArray = [UIImage]()
-        for var i = 5; i >= 1; i-- {
-            let img = UIImage(named: "dead\(i).png")
+        for var i = 1; i <= 6; i++ {
+            let img = UIImage(named: "appear (\(i)).png")
             imgArray.append(img!)
         }
         
@@ -73,5 +73,5 @@ class MonsterImg: UIImageView {
         self.animationRepeatCount = 1
         self.startAnimating()
     }
-
+    
 }
